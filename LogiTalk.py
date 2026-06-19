@@ -7,37 +7,30 @@ import base64
 import io
 import os
 
-# ГОЛОВНЕ ВІКНО ПРОГРАМИ
 class MainWindow(CTk):
     def __init__(self):
         super().__init__()
-        # ІДЕЯ ДЛЯ ТЕБЕ: Тут можна змінити початковий розмір вікна додатка
         self.geometry('400x300')
-        self.title("LogiTalk")  #
-
-        # заглушки для майбутніх елементів висувного меню
+        self.title("LogiTalk")  
         self.label = None
         self.entry = None
-        self.save_button = None  #
-        self.theme_button = None  #
+        self.save_button = None  
+        self.theme_button = None  
 
-        # налаштування сітки (grid) головного вікна для адаптивності
         self.grid_columnconfigure(0, weight=0)
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=0)
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=0)
 
-        # створення бічної панелі для меню
         self.menu_frame = CTkFrame(self, width=0, height=300)
         self.menu_frame.grid_propagate(False)
         self.menu_frame.grid(row=0, column=0, rowspan=3, sticky="ns")
         self.menu_frame.grid_columnconfigure(0, weight=1)
 
-        # параметри для плавної анімації меню
         self.is_show_menu = False
         self.frame_width = 0
-        self.menu_show_speed = 20  # ІДЕЯ ДЛЯ ТЕБЕ: Змінивши це число, можна зробити меню швидшим чи повільнішим
+        self.menu_show_speed = 20  
 
         # кнопка для відкриття та закриття меню
         self.btn = CTkButton(self, text='▶️', command=self.show_menu, width=30)
